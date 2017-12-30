@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,10 +30,10 @@ public class Main {
         containsDuplicates(array);
 
         // O(2^)
-        factorial(6);
+        System.out.println(factorial(6));
 
         // O(log n)
-        binarySearch(31, array);
+        System.out.println(binarySearch(31, array));
 
     }
 
@@ -66,6 +68,7 @@ public class Main {
                     if (outer != inner) {
                         if (elements.get(outer) == elements.get(inner)) {
                             System.out.println("Duplikater fundet");
+                            return;
                         }
                     }
                 }
@@ -84,10 +87,13 @@ public class Main {
 
     }
 
-    public boolean binarySearch(int key, List<Integer> data)
+    public static boolean binarySearch(int key, List<Integer> data)
     {
+
+        // Binary virker kun på sorteret dataset
+        Collections.sort(data);
         int low = 0;
-        int high = data.size() - 1;
+        int high = data.size()-1;
 
         while(high >= low) {
             int middle = (low + high) / 2;
@@ -102,9 +108,9 @@ public class Main {
                 high = middle - 1;
             }
         }
-                return false;
+        return false;
     }
 
 
     }
-}
+
